@@ -1,12 +1,13 @@
 import * as basicLightbox from 'basiclightbox';
+import { ModalBlock, Overlay } from './Modal.styled';
 
 export const Modal = () => {
   return (
-    <div>
-      <div>
+    <Overlay>
+      <ModalBlock>
         <img src="" alt="" />
-      </div>
-    </div>
+      </ModalBlock>
+    </Overlay>
   );
 };
 
