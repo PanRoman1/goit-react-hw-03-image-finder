@@ -16,11 +16,13 @@ export class App extends Component {
     this.setState({ imageName });
   };
 
+  setNextPage = () => this.setState(({ page }) => ({ page: page + 1 }));
+
   render() {
     return (
       <Layout>
         <Searchbar onSubmit={this.handleFormSearch} />
-        <ImageGallery imageName={this.state.imageName} />
+        <ImageGallery query={this.state.imageName} />
         <Button />
         <Loader />
         <ToastContainer autoClose={3000} />
