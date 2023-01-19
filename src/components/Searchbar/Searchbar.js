@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import PropTypes from 'prop-types';
 import {
   SearchbarHeader,
@@ -13,21 +12,21 @@ import {
 
 export class Searchbar extends Component {
   state = {
-    imageName: '',
+    query: '',
   };
   handleNameChange = event => {
-    this.setState({ imageName: event.currentTarget.value.toLowerCase() });
+    this.setState({ query: event.currentTarget.value.toLowerCase() });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.imageName.trim() === '') {
-      return toast.error('Введіть тематику для пошуку фото!', {
+    if (this.state.query.trim() === '') {
+      toast.error('Введіть тематику для пошуку фото!', {
         theme: 'colored',
       });
     }
-    this.props.onSubmit(this.state.imageName);
-    this.setState({ imageName: '' });
+    this.props.onSubmit(this.state.query);
+    this.setState({ query: '' });
   };
 
   render() {
@@ -43,8 +42,8 @@ export class Searchbar extends Component {
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
-            name="imageName"
-            value={this.state.imageName}
+            name="query"
+            value={this.state.query}
             onChange={this.handleNameChange}
           />
         </SearchForm>
@@ -52,3 +51,7 @@ export class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

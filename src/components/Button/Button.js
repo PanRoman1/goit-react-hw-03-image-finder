@@ -1,12 +1,9 @@
 import PropTypes from 'prop-types';
+
 import { ButtomLoad } from './Button.styled';
 
 export const Button = ({ onClick }) => {
-  return (
-    <ButtomLoad onClick={onClick} type="button">
-      Load More
-    </ButtomLoad>
-  );
+  return <ButtomLoad onClick={onClick}>Load More</ButtomLoad>;
 };
 
 Button.propTypes = {
